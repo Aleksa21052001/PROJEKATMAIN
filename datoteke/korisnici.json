@@ -1,0 +1,16 @@
+[{
+  "korisnicko_ime": "marko",
+  "lozinka": "markovic",
+  "ime": "Marko",
+  "prezime": "Markovic",
+  "tip_korisnika": "prodavac"
+},
+  {
+  "korisnicko_ime": "admin",
+  "lozinka": "admin",
+  "ime": "Aleksa ",
+  "prezime": "Cosovic",
+  "tip_korisnika": "administrator"
+},
+  {"korisnicko_ime": "marko", "lozinka": "markovid", "ime": "Marko", "prezime": "Markovic", "tip_korisnika": "menadzer"}
+]
