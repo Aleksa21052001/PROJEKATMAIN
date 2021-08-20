@@ -1,5 +1,5 @@
-from korisnici.kosrisnici import prijava, registracija_novih_korisnika
-from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige
+from korisnici.kosrisnici import prijava, registracija_novih_korisnika, prikaz_svih_korisnika
+from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige
 
 def meni_administrator():
 
@@ -29,14 +29,15 @@ def meni_administrator():
         elif stavka == 5:
             registracija_novih_korisnika()
         elif stavka == 6:
-            pass
+            prikaz_svih_korisnika()
         elif stavka == 7:
-            pass
+            dodavanje_knjige()
+        elif stavka == 8:
+            izmena_knjige()
         elif stavka == 10:
             return
         else:
             print("pokušajte ponovo")
-
 
 
 def main():

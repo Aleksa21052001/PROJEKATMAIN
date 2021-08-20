@@ -12,5 +12,6 @@
   "prezime": "Cosovic",
   "tip_korisnika": "administrator"
 },
-  {"korisnicko_ime": "marko", "lozinka": "markovid", "ime": "Marko", "prezime": "Markovic", "tip_korisnika": "menadzer"}
+  {"korisnicko_ime": "marko", "lozinka": "markovic", "ime": "Marko", "prezime": "Markovic", "tip_korisnika": "menadzer"},
+  {"korisnicko_ime": "1", "lozinka": "1", "ime": "1", "prezime": "1", "tip_korisnika": "prodavac"}
 ]

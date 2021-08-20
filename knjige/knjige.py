@@ -1,4 +1,61 @@
-from knjige.knjigeIO import ucitaj_knjige
+from knjige.knjigeIO import ucitaj_knjige, sacuvaj_knjige
+
+
+
+def dodavanje_knjige():
+    spisak_knjiga = ucitaj_knjige()
+    knjiga = {}
+
+    sifra = input("unesite sifru knjige koju zelite da dodate: ")
+
+    knjiga["sifra"] = sifra
+    knjiga["naslov"] = input("naslov: ")
+    knjiga["autor"] = input("autor: ")
+    knjiga["isbn"] = input("unesite isbn knjige koju zelite da dodate: ")
+    knjiga["izdavac"] = input("izdavac: ")
+    knjiga["godina"] = input("godina izdanja: ")
+    knjiga["cena"] = input("cena: ")
+    knjiga["kategorija"] = input("kategorija: ")
+
+    if pronadji_knjigu_po_sifri(sifra) is None:
+        spisak_knjiga.append(knjiga)
+        sacuvaj_knjige(spisak_knjiga)
+    else:
+        print('knjiga sa unetim isbn-om vec postoji')
+
+
+
+
+def pronadji_knjigu_po_sifri(sifra_knjige):
+    knjige = ucitaj_knjige()
+
+    sifra = str(sifra_knjige)
+    for knjiga in knjige:
+        if knjiga["sifra"] == sifra:
+            return knjiga
+
+
+    return None
+
+def izmena_knjige(): #kako da izbrise knjigu sa vec postojecom vrednoscu ili zamenimo
+    knjige = ucitaj_knjige()
+
+    sifra_knjige = input("unesite sifru knjige koju zelite da izmenite: ")
+    knjiga = pronadji_knjigu_po_sifri(sifra_knjige)
+
+    print(knjiga)
+
+    knjiga["naslov"] = input("naslov: ")
+    knjiga["autor"] = input("autor: ")
+    knjiga["isbn"] = input("unesite ")
+    knjiga["izdavac"] = input("isbn: ")
+    knjiga["godina"] = input("godina: ")
+    knjiga["cena"] = input("cena: ")
+    knjiga["kategorija"] = input("kategorija: ")
+
+    knjige.append(knjiga)
+
+    sacuvaj_knjige(knjige)
 
 def pretrazi_knjigu_range(kljuc, donja_granica , gornja_granica):
     knjige = ucitaj_knjige()
