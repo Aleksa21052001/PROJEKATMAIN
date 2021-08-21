@@ -1,17 +1,7 @@
-[{
-  "korisnicko_ime": "marko",
-  "lozinka": "markovic",
-  "ime": "Marko",
-  "prezime": "Markovic",
-  "tip_korisnika": "prodavac"
-},
-  {
-  "korisnicko_ime": "admin",
-  "lozinka": "admin",
-  "ime": "Aleksa ",
-  "prezime": "Cosovic",
-  "tip_korisnika": "administrator"
-},
-  {"korisnicko_ime": "marko", "lozinka": "markovic", "ime": "Marko", "prezime": "Markovic", "tip_korisnika": "menadzer"},
-  {"korisnicko_ime": "1", "lozinka": "1", "ime": "1", "prezime": "1", "tip_korisnika": "prodavac"}
+[
+  {"korisnicko_ime": "prodavac", "lozinka": "prodavac", "ime": "Marko", "prezime": "Markovic", "tip_korisnika": "prodavac"},
+  {"korisnicko_ime": "admin", "lozinka": "admin", "ime": "Aleksa ", "prezime": "Cosovic", "tip_korisnika": "administrator"},
+  {"korisnicko_ime": "menadzer", "lozinka": "menadzer", "ime": "Marko", "prezime": "Markovic", "tip_korisnika": "menadzer"},
+  {"korisnicko_ime": "fsdf", "lozinka": "sdf", "ime": "sdf", "prezime": "sdf", "tip_korisnika": "menadzer"},
+  {"korisnicko_ime": "aleksa", "lozinka": "cosovic", "ime": "aleksa", "prezime": "cosovic", "tip_korisnika": "menadzer"}
 ]

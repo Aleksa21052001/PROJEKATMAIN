@@ -1,5 +1,13 @@
 from korisnici.korisniciIO import ucitaj_korisnike, sacuvaj_korisnike
 
+
+
+
+def zaglavlje():
+    print('korisnicko_ime   |ime                |prezime                |tip_korisnika')
+    print('-----------------|-------------------|-----------------------|-------------')
+
+
 def sortiraj_korisnika(kljuc):
     korisnici = ucitaj_korisnike()
 
@@ -32,48 +40,73 @@ def prikaz_svih_korisnika():
 
     if opcija == 1:
         sortirani_korisnici  = sortiraj_korisnika("ime")
+        zaglavlje()
     elif opcija ==2:
         sortirani_korisnici = sortiraj_korisnika("prezime")
+        zaglavlje()
     elif opcija ==3:
         sortirani_korisnici = sortiraj_korisnika("tip_korisnika")
+        zaglavlje()
     else:
         print("Izabrali ste nepostojecu opciju")
 
+
     for korisnik in sortirani_korisnici:
-        print(korisnik)
+        tabela_korisnika = korisnik["korisnicko_ime"].ljust(17) + "|" + korisnik["ime"].ljust(19)  + "|" + korisnik["prezime"].ljust(23)  + "|" + korisnik["tip_korisnika"]
+        print(tabela_korisnika)
 
-def provera_korisnika():
 
-    pass
+def provera_korisnika(korisnici , korisnicko_ime):
 
-def registracija_novih_korisnika():   #ne doda ih u listu i kako spreciti unosenje sa vec postojecim korisnickim imenom"""
+    for korisnik in korisnici:
+        if korisnik["korisnicko_ime"] == korisnicko_ime:
+            return korisnik
+    return None
+
+def registracija_novih_korisnika():
 
     korisnici = ucitaj_korisnike()
 
-    korisnicko_ime = input('unesite korisnicko ime novog korisnika: ')
-    lozinka = input('unesite lozinku: ')
-    ime = input('unesite ime novog korisnika: ')
-    prezime = input('unesite prezime novog korisnika: ')
-    tip_korisnika = input('tip novof korisnika je: ')
+    korisnicko_ime = str(input('unesite korisnicko ime novog korisnika: '))
+    if provera_korisnika(korisnici, korisnicko_ime) is None:
+        lozinka = input('unesite lozinku: ')
+        ime = input('unesite ime novog korisnika: ')
+        prezime = input('unesite prezime novog korisnika: ')
 
-    novi_korisnik = {"korisnicko_ime":korisnicko_ime, "lozinka":lozinka, "ime":ime, "prezime": prezime , "tip_korisnika":tip_korisnika}
+        while True:
+            tip_korisnika = str(input('tip je menadzer/prodavac: '))
 
-    korisnici.append(novi_korisnik)
+            if tip_korisnika == "menadzer" or tip_korisnika == "prodavac":
+                novi_korisnik = {"korisnicko_ime":korisnicko_ime, "lozinka":lozinka, "ime":ime, "prezime": prezime , "tip_korisnika":tip_korisnika}
+                print("korisnik je uspesno registrovan")
+                break
 
-    sacuvaj_korisnike(korisnici)
+            print("greska pri izboru tipa korisnika, pokusajte ponovo\n")
 
+        korisnici.append(novi_korisnik)
+        sacuvaj_korisnike(korisnici)
+    else:
+        print("korisnik vec postoji!")
 
 def prijava(): #proverava da li postoji korisnik, treba nam f-ja koja ucitava i koja proverava korisnike
 
     korisnici = ucitaj_korisnike()
 
-    korisnicko_ime = input('unesite korisnicko ime: ')
-    lozinka = input('unesite lozinku: ')
+    i = 0
+    while not i == 3:
 
+        korisnicko_ime = input('unesite korisnicko ime: ')
+        lozinka = input('unesite lozinku: ')
 
-    for korisnik in korisnici: #namesti da tri puta moze da pogadja
-        if korisnik["korisnicko_ime"] == korisnicko_ime and korisnik['lozinka'] == lozinka:
-            return korisnik #vratimo jer ce nam trebati da znamo ko je korisnik, koja mu je uloga koji meni da mu prikazemo
+        for korisnik in korisnici:
+            if korisnik["korisnicko_ime"] == korisnicko_ime and korisnik['lozinka'] == lozinka:
+                return korisnik #vratimo jer ce nam trebati da znamo ko je korisnik, koja mu je uloga koji meni da mu prikazemo
 
-    print('"pogresno korisnicko ime ili lozinka, pokusajte ponovo"')
+        if i != 2:
+            print("Pogrešno korisnčko ime ili lozinka\n")
+
+        i = i + 1
+
+    print('"Previše puta ste pogrešili"')
+
     return None
