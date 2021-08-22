@@ -39,7 +39,7 @@ def meni_menadzer():
             print('"Hvala sto ste koristili aplikaciju"')
             return
         else:
-            print("izabrali ste nepostojecu opciju, pokušajte ponovo")
+            print('"izabrali ste nepostojecu opciju, pokušajte ponovo"')
 
 
 def meni_prodavac():
@@ -77,7 +77,7 @@ def meni_prodavac():
             print('"Hvala sto ste koristili aplikaciju"')
             return
         else:
-            print("izabrali ste nepostojecu opciju, pokušajte ponovo")
+            print('"izabrali ste nepostojecu opciju, pokušajte ponovo"')
 
 
 def meni_administrator():
@@ -106,6 +106,7 @@ def meni_administrator():
         elif stavka == 4:
             pass
         elif stavka == 5:
+
             registracija_novih_korisnika()
         elif stavka == 6:
             prikaz_svih_korisnika()
@@ -120,7 +121,7 @@ def meni_administrator():
             print('"Hvala sto ste koristili aplikaciju"')
             return
         else:
-            print("izabrali ste nepostojecu opciju, pokušajte ponovo")
+            print('"izabrali ste nepostojecu opciju, pokušajte ponovo"')
 
 
 def main():
@@ -140,6 +141,6 @@ def main():
             print("Ulogovani korisnik je:", ulogovani_korisnik['tip_korisnika'].upper())
             meni_menadzer()
         else:
-            print("Korisnik ima nepoznatu ulogu")
+            print('"Korisnik ima nepoznatu ulogu"')
 
 main()

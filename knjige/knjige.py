@@ -32,20 +32,32 @@ def dodavanje_knjige():
 
     sifra = int(input("unesite sifru knjige koju zelite da dodate: "))
 
-    knjiga["sifra"] = sifra
-    knjiga["naslov"] = str(input("naslov: "))
-    knjiga["autor"] = str(input("autor: "))
-    knjiga["isbn"] = str(input("unesite isbn knjige koju zelite da dodate: "))
-    knjiga["izdavac"] = str(input("izdavac: "))
-    knjiga["godina"] = int(input("godina izdanja: "))
-    knjiga["cena"] = float(input("cena: "))
-    knjiga["kategorija"] = str(input("kategorija: "))
-
     if pronadji_knjigu_po_sifri(spisak_knjiga, sifra) is None:
+        knjiga["sifra"] = sifra
+        knjiga["naslov"] = str(input("naslov: "))
+        knjiga["autor"] = str(input("autor: "))
+        knjiga["isbn"] = str(input("unesite isbn knjige koju zelite da dodate: "))
+        knjiga["izdavac"] = str(input("izdavac: "))
+        knjiga["godina"] = int(input("godina izdanja: "))
+        knjiga["cena"] = float(input("cena: "))
+        knjiga["kategorija"] = str(input("kategorija: "))
+
         spisak_knjiga.append(knjiga)
         sacuvaj_knjige(spisak_knjiga)
     else:
-        print('knjiga sa unetom sifrom vec postoji')
+        print('"knjiga sa unetom sifrom vec postoji!"')
+
+
+
+
+
+def prikaz_knjiga_za_izmenu():
+    zaglavlje()
+    knjige = ucitaj_knjige()
+    for knjiga in knjige:
+        tabela_knjiga = str(knjiga["sifra"]).ljust(8) + "|" + knjiga["naslov"].ljust(22) + "|" + knjiga["autor"].ljust(21) + "|" + knjiga["isbn"].ljust(20) + "|" + knjiga["izdavac"].ljust(21) + "|" + str(knjiga["godina"]).ljust(15) + "|" + str(knjiga["cena"]).ljust(13) + "|" + knjiga["kategorija"] #+ knjiga["obrisana"] == "True"
+        print(tabela_knjiga)
+    print()
 
 
 def pronadji_knjigu_po_sifri(knjige, sifra_knjige):
@@ -55,18 +67,11 @@ def pronadji_knjigu_po_sifri(knjige, sifra_knjige):
             return knjiga
     return None
 
-def prikaz_knjiga():
-    zaglavlje()
-    knjige = ucitaj_knjige()
-    for knjiga in knjige:
-        tabela_knjiga = str(knjiga["sifra"]).ljust(8) + "|" + knjiga["naslov"].ljust(22) + "|" + knjiga["autor"].ljust(21) + "|" + knjiga["isbn"].ljust(20) + "|" + knjiga["izdavac"].ljust(21) + "|" + str(knjiga["godina"]).ljust(15) + "|" + str(knjiga["cena"]).ljust(13) + "|" + knjiga["kategorija"] #+ knjiga["obrisana"] == "True"
-        print(tabela_knjiga)
-    print()
 
 def izmena_knjige():
     knjige = ucitaj_knjige()
 
-    prikaz_knjiga()
+    prikaz_knjiga_za_izmenu()
 
     sifra_knjige = int(input("unesite sifru knjige koju zelite da izmenite: "))
     knjiga = pronadji_knjigu_po_sifri(knjige, sifra_knjige)
@@ -82,9 +87,7 @@ def izmena_knjige():
         knjiga["kategorija"] = input("kategorija: ")
 
         sacuvaj_knjige(knjige)
-
         print("knjiga je izmenjena")
-
     else:
         print('ne postoji knjiga sa unetom sifrom', sifra_knjige)
 
@@ -92,6 +95,7 @@ def izmena_knjige():
 
 
 def zaglavlje():
+    print()
     print('sifra   |naslov                |autor                |isbn                |izdavac              |godina         |cena         |kategorija')
     print('--------|----------------------|---------------------|--------------------|---------------------|---------------|-------------|----------')
 
@@ -132,7 +136,7 @@ def pretrazi_knjige_brojevi(kljuc, vrednost):
 
 def pretrazi_knjige(): #knjige
 
-    print("1. Pretraga po šifri")
+    print("\n1. Pretraga po šifri")
     print("2. Pretraga po naslovu")
     print("3. Pretraga po autoru")
     print("4. Pretraga po kategoriji")
@@ -166,10 +170,13 @@ def pretrazi_knjige(): #knjige
     elif opcija == 6:
         donja_cena = float(input("Unesite donju cenu: "))
         gornja_cena = float(input("unesite gornju cenu: "))
+        if gornja_cena < donja_cena:
+            print('"greska pri unosu vrednosti!"')
+            return
         knjige = pretrazi_knjigu_range('cena', donja_cena, gornja_cena)
         zaglavlje()
     else:
-        print("Opcija ne postoji")
+        print('"Opcija ne postoji"')
 
     for knjiga in knjige:
         tabela_knjiga = str(knjiga["sifra"]).ljust(8) + "|" + knjiga["naslov"].ljust(22) + "|" + knjiga["autor"].ljust(21) + "|" + knjiga["isbn"].ljust(20) + "|" + knjiga["izdavac"].ljust(21) + "|" + str(knjiga["godina"]).ljust(15) + "|" + str(knjiga["cena"]).ljust(13) + "|" + knjiga["kategorija"].ljust(15)
@@ -193,7 +200,7 @@ def sortiraj_knjige(kljuc): #knjige ,
 
 def prikazi_knjige():
 
-    print("1. Sortiranje po naslovu")
+    print("\n1. Sortiranje po naslovu")
     print("2. Sortiranje po kategoriji")
     print("3. Sortiranje po autoru")
     print("4. Sortiranje po izdavaču")
