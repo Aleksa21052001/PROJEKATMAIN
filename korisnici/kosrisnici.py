@@ -35,7 +35,7 @@ def prikaz_svih_korisnika():
     print("2. sortiranje po prezimenu")
     print("3. sortiranje po tipu korisnika")
 
-    opcija = int(input("izaberite parametar sortiranja: "))
+    opcija = int(input(">>izaberite parametar sortiranja: "))
 
     sortirani_korisnici  = []
 
@@ -68,17 +68,17 @@ def registracija_novih_korisnika():
 
     korisnici = ucitaj_korisnike()
     print()
-    korisnicko_ime = str(input('unesite korisnicko ime novog korisnika: '))
+    korisnicko_ime = str(input('>>unesite korisnicko ime novog korisnika: '))
 
     if provera_korisnika(korisnici, korisnicko_ime) is None:
-        lozinka = input('unesite lozinku: ')
-        ime = input('unesite ime novog korisnika: ')
-        prezime = input('unesite prezime novog korisnika: ')
+        lozinka = input('>>unesite lozinku: ')
+        ime = input('>>unesite ime novog korisnika: ')
+        prezime = input('>>unesite prezime novog korisnika: ')
 
-        print("\n'ako zelite da napustite registraciju ukucajte: nazad'\n")
+        print("\n'Ako zelite da napustite registraciju ukucajte: nazad'\n")
 
         while True:
-            tip_korisnika = str(input('tip je menadzer/prodavac: '))
+            tip_korisnika = str(input('>>tip je menadzer/prodavac: '))
             if tip_korisnika == "nazad":
                 print("'registracija je prekinuta!'")
                 return
@@ -100,8 +100,8 @@ def prijava():   #proverava da li postoji korisnik, treba nam f-ja koja ucitava 
     i = 0
     while not i == 3:
 
-        korisnicko_ime = input('unesite korisnicko ime: ')
-        lozinka = input('unesite lozinku: ')
+        korisnicko_ime = input('>>unesite korisnicko ime: ')
+        lozinka = input('>>unesite lozinku: ')
 
         for korisnik in korisnici:
             if korisnik["korisnicko_ime"] == korisnicko_ime and korisnik['lozinka'] == lozinka:

@@ -1,22 +1,24 @@
 from korisnici.kosrisnici import prijava, registracija_novih_korisnika, prikaz_svih_korisnika
 from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige
 
-
+def zajednici_meni():
+    print("\n1. Prikaz knjiga")
+    print("2. Pretraga knjiga")
+    print("3. Prikaz akcija")
+    print("4. Pretraga akcija")
 
 def meni_menadzer():
 
     while True:
-        print("\n1. Prikaz knjiga")
-        print("2. Pretraga knjiga")
-        print("3. Prikaz akcija")
-        print("4. Pretraga akcija")
+        zajednici_meni()
         print("5. Registracija")
         print("6. Lista korisnika")
         print("7. Dodavanje akcijske ponude")
         print("8. kreiranje izvestaja")
         print("10. Kraj")
 
-        stavka = int(input("Izaberite stavku: "))
+        stavka = int(input(">>Izaberite stavku: "))
+
 
         if stavka == 1:
             prikazi_knjige()
@@ -45,16 +47,13 @@ def meni_menadzer():
 def meni_prodavac():
 
     while True:
-        print("\n1. Prikaz knjiga")
-        print("2. Pretraga knjiga")
-        print("3. Prikaz akcija")
-        print("4. Pretraga akcija")
+        zajednici_meni()
         print("5. prodaja knjiga")
         print("6. Dodavanje knjige")
         print("7. Izmena knjige")
         print("8. Logičko brisanje knjige")
         print("10. Kraj")
-        opcija = int(input("Izaberite opciju: "))
+        opcija = int(input(">>Izaberite opciju: "))
 
         if opcija == 1:
             prikazi_knjige()
@@ -84,10 +83,7 @@ def meni_administrator():
 
     #knjige = ucitaj_knjige(), ako ovde hocemo da ucitamo pa prosledimo dalje
     while True:
-        print("\n1. Prikaz knjiga")
-        print("2. Pretraga knjiga")
-        print("3. Prikaz akcija")
-        print("4. Pretraga akcija")
+        zajednici_meni()
         print("5. Registracija")
         print("6. Lista korisnika")
         print("7. Dodavanje knjige")
@@ -95,7 +91,7 @@ def meni_administrator():
         print("9. Logičko brisanje knjige")
         print("10. Kraj")
 
-        stavka = int(input("Izaberite stavku: "))
+        stavka = int(input(">>Izaberite stavku: "))
 
         if stavka == 1:
             prikazi_knjige()
