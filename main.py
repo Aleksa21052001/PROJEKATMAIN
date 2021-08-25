@@ -1,5 +1,5 @@
-from korisnici.kosrisnici import prijava, registracija_novih_korisnika, prikaz_svih_korisnika
-from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige
+from korisnici.korisnici import prijava, registracija_novih_korisnika, prikaz_svih_korisnika
+from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige, logicko_brisanje
 
 def zajednici_meni():
     print("\n1. Prikaz knjiga")
@@ -111,7 +111,7 @@ def meni_administrator():
         elif stavka == 8:
             izmena_knjige()
         elif stavka == 9:
-            pass
+            logicko_brisanje()
         elif stavka == 10:
             print()
             print('"Hvala sto ste koristili aplikaciju"')
