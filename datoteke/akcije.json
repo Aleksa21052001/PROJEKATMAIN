@@ -1,0 +1,34 @@
+[
+    {
+        "sifra": 1,
+        "datum": "10-10-2021",
+        "knjige": [
+            {
+                "sifra": 25,
+                "naslov": "NEBO NEMA MILJENIKE",
+                "autor": "Erih Marija Remark",
+                "isbn": "13463562333229",
+                "izdavac": "Delfi knjizare",
+                "godina": 2019,
+                "cena": 1133.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            },
+            {
+                "sifra": 2358,
+                "naslov": "Tajni ivot pisaca",
+                "autor": "Gijom Muso",
+                "isbn": "756756567",
+                "izdavac": "vvulkan",
+                "godina": 2001,
+                "cena": 75756.0,
+                "kategorija": "roman",
+                "obrisana": true
+            }
+        ],
+        "cene": [
+            700.0,
+            300.0
+        ]
+    }
+]

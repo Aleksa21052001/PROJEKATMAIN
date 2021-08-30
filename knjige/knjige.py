@@ -1,10 +1,15 @@
 from knjige.knjigeIO import ucitaj_knjige, sacuvaj_knjige
+from korisnici import korisnici
+from akcije.akcijeIO import ucitaj_akcije, sacuvaj_akcije
+from racuni.racuniIO import ucitaj_racune, sacuvaj_racune
+from datetime import datetime
+from unos import unesi_ceo_broj, unesi_decimalni_broj
 
-"""
+
 def logicko_brisanje():
     knjige = ucitaj_knjige()
 
-    sifra_knjige = int(input("unesite sifru knjige koju zelite da izmenite: "))
+    sifra_knjige = unesi_ceo_broj("unesite sifru knjige koju zelite da obrisite: ")
     knjiga_za_brisanje = pronadji_knjigu_po_sifri(knjige, sifra_knjige)
     print(knjiga_za_brisanje)
     if knjiga_za_brisanje:
@@ -12,10 +17,10 @@ def logicko_brisanje():
         print("1. Da")
         print("2. Ne")
         print()
-        opcija = int(input("izaberite opciju: "))
+        opcija = unesi_ceo_broj("izaberite opciju: ")
 
         if opcija == 1:
-            knjiga_za_brisanje["obrisanaa"] = "True"
+            knjiga_za_brisanje["obrisana"] = True
             sacuvaj_knjige(knjige)
             print("knjiga je obrisana")
         if opcija == 2:
@@ -24,7 +29,7 @@ def logicko_brisanje():
     else:
         print('ne postoji knjiga sa unetom sifrom', sifra_knjige)
 
-"""
+
 
 
 def dodavanje_knjige():
@@ -43,12 +48,23 @@ def dodavanje_knjige():
         knjiga["autor"] = str(input(">>autor: "))
         knjiga["isbn"] = str(input(">>unesite isbn knjige koju zelite da dodate: "))
         knjiga["izdavac"] = str(input(">>izdavac: "))
-        knjiga["godina"] = int(input(">>godina izdanja: "))
-        knjiga["cena"] = float(input(">>cena: "))
+
+        godina = 0
+        while godina < 1 or godina > 2021:
+            try:
+                godina = unesi_ceo_broj(">>godina izdanja: ")
+                knjiga["godina"] = godina
+            except ValueError:
+                print('"nije validna godina, probajte ponovo!"')
+                pass
+
+        knjiga["cena"] = unesi_decimalni_broj(">>cena: ")
         knjiga["kategorija"] = str(input(">>kategorija: "))
+        knjiga["obrisana"] = False
 
         spisak_knjiga.append(knjiga)
         sacuvaj_knjige(spisak_knjiga)
+        print('"knjiga je uspesno dodata"')
     else:
         print('"knjiga sa unetom sifrom vec postoji!"')
 
@@ -56,12 +72,7 @@ def dodavanje_knjige():
 def prikaz_knjiga_za_izmenu():
     zaglavlje()
     knjige = ucitaj_knjige()
-    for knjiga in knjige:
-        tabela_knjiga = str(knjiga["sifra"]).ljust(8) + "|" + knjiga["naslov"].ljust(22) + "|" + knjiga["autor"].ljust(
-            21) + "|" + knjiga["isbn"].ljust(20) + "|" + knjiga["izdavac"].ljust(21) + "|" + str(
-            knjiga["godina"]).ljust(15) + "|" + str(knjiga["cena"]).ljust(13) + "|" + knjiga[
-                            "kategorija"]  # + knjiga["obrisana"] == "True"
-        print(tabela_knjiga)
+    ispisi_tabelu(knjige)
     print()
 
 
@@ -106,6 +117,7 @@ def izmena_knjige():
         print('"knjiga je izmenjena"')
     else:
         print('"ne postoji knjiga sa unetom sifrom"', sifra_knjige)
+        #return izmena_knjige()  #da se izmena desava dok ne unesemo ispravnu sifru
 
 
 def zaglavlje():
@@ -195,11 +207,7 @@ def pretrazi_knjige():  # knjige
     else:
         print('"Opcija ne postoji"')
 
-    for knjiga in knjige:
-        tabela_knjiga = str(knjiga["sifra"]).ljust(8) + "|" + knjiga["naslov"].ljust(22) + "|" + knjiga["autor"].ljust(
-            21) + "|" + knjiga["isbn"].ljust(20) + "|" + knjiga["izdavac"].ljust(21) + "|" + str(
-            knjiga["godina"]).ljust(15) + "|" + str(knjiga["cena"]).ljust(13) + "|" + knjiga["kategorija"].ljust(15)
-        print(tabela_knjiga)
+    ispisi_tabelu(knjige)
 
 
 def sortiraj_knjige(kljuc):  # knjige ,
@@ -217,6 +225,241 @@ def sortiraj_knjige(kljuc):  # knjige ,
     return knjige
 
 
+def ispisi_tabelu(knjige):
+    for knjiga in knjige:
+        if not knjiga["obrisana"] or korisnici.ulogovani_korisnik["tip_korisnika"] == "administrator":
+            tabela_knjiga = str(knjiga["sifra"]).ljust(8) + "|" + knjiga["naslov"].ljust(22) + "|" + knjiga[
+                "autor"].ljust(
+                21) + "|" + knjiga["isbn"].ljust(20) + "|" + knjiga["izdavac"].ljust(21) + "|" + str(
+                knjiga["godina"]).ljust(15) + "|" + str(knjiga["cena"]).ljust(13) + "|" + knjiga["kategorija"].ljust(15)
+            print(tabela_knjiga)
+
+
+def prodavanje_knjige_preko_sifre():
+    korpa = []
+    knjige = ucitaj_knjige()
+    while True:
+        sifra = int(input("Unesi šifru: "))
+        for knjiga in knjige:
+            if knjiga["sifra"] == sifra:
+                trazena_knjiga = knjiga
+                break
+        else:
+            print("Takva knjiga ne postoji.")
+            continue
+        kolicina = int(input("Unesi količinu:"))
+        podatak = (trazena_knjiga, kolicina, trazena_knjiga["cena"], False)
+        korpa.append(podatak)
+        print("Da li želite uneti novu knjigu?(da/ne)")
+        izbor = input()
+        if izbor == "ne":
+            break
+    return korpa
+
+
+def prodavanje_knjige_preko_akcije():
+    korpa = []
+    print("Unesi sifru akcije")
+    sifra_akcije = int(input())
+    akcije = ucitaj_akcije()
+    for akcija in akcije:
+        if akcija["sifra"] == sifra_akcije:
+            trazena_akcija = akcija
+            break
+    else:
+        print("Takva akcija ne postoji.")
+        return
+    for knjiga, cena in zip(trazena_akcija["knjige"], trazena_akcija["cene"]):
+        podatak = (knjiga, 1, cena, True)
+        korpa.append(podatak)
+    return korpa
+    
+
+def pregled_korpe(korpa):
+    ukupna_cena = 0
+    for knjiga, kolicina, cena, jeste_akcija in korpa:
+        print(knjiga["naslov"], "Količina:", kolicina, "Cena:", cena)
+        ukupna_cena += kolicina * cena
+    print("Ukupna cena:", ukupna_cena)
+
+
+def prodaja_knjiga():
+    korpa = []
+    while True:
+        print("1. Prodavanje knjige preko sifri")
+        print("2. Prodavanje knjige preko akcije")
+        print("3. Nastavi prodaju")
+        print("4. Pregled korpe")
+
+        izbor = input("Unesite opciju: ")
+        if izbor == "1":
+            korpa2 = prodavanje_knjige_preko_sifre()
+            korpa.extend(korpa2)
+        elif izbor == "2":
+            korpa2 = prodavanje_knjige_preko_akcije()
+            korpa.extend(korpa2)
+        elif izbor == "3":
+            break
+        elif izbor == "4":
+            pregled_korpe(korpa)
+        else:
+            print("Loš izbor")
+            return
+    
+    trenutni_datum_vreme = datetime.now()
+    knjige = []
+    kolicine = []
+    jedinicne_cene = []
+    jeste_akcija = []
+    ukupna_cena = 0
+    for podatak in korpa:
+        knjige.append(podatak[0])
+        kolicine.append(podatak[1])
+        jedinicne_cene.append(podatak[2])
+        jeste_akcija.append(podatak[3])
+        ukupna_cena += podatak[1]*podatak[2]
+    potvrda = input("Da li želite da nastavite sa kupovinom?(da/ne): ")
+    if potvrda == "ne":
+        print("Odustali ste od kupovine")
+        return
+    racuni = ucitaj_racune()
+    if len(racuni) == 0:
+        sifra = 1
+    else:
+        sifra = racuni[-1]["sifra"] + 1
+    prodavac = korisnici.ulogovani_korisnik["korisnicko_ime"]
+    racun = {"sifra": sifra, 
+            "knjige":knjige, 
+            "kolicine": kolicine, 
+            "jedinicne_cene": jedinicne_cene, 
+            "datum_vreme": trenutni_datum_vreme,
+            "ukupna_cena": ukupna_cena,
+            "jeste_akcija": jeste_akcija,
+            "prodavac": prodavac}
+    racuni.append(racun)
+    sacuvaj_racune(racuni)
+    print("Uspešna kupovina!")
+
+
+def dodavanje_akcije():
+    knjige_za_akciju = []
+    cene = []
+    knjige = ucitaj_knjige()
+    datum = input("Unesi datum vazenja akcije(dd-mm-YYYY): ")
+    datum = datetime.strptime(datum, "%d-%m-%Y")
+    while True:
+        sifra_knjige = int(input("Unesi sifru knjige: "))
+        for knjiga in knjige:
+            if knjiga["sifra"] == sifra_knjige:
+                trazena_knjiga = knjiga
+                break
+        else:
+            print("Ne postoji takva knjiga.")
+            continue
+        nova_cena = float(input("Unesi novu cenu knjige: "))
+        knjige_za_akciju.append(trazena_knjiga)
+        cene.append(nova_cena)
+        potvrda_nove = input("Da li zelite dodati novu knjigu?(da/ne)")
+        if potvrda_nove == "ne":
+            break
+    akcije = ucitaj_akcije()
+    if len(akcije) == 0:
+        sifra = 1
+    else:
+        sifra = akcije[-1]["sifra"] + 1
+    akcija = {"sifra": sifra, "datum": datum, "knjige":knjige_za_akciju, "cene": cene}
+    akcije.append(akcija)
+    sacuvaj_akcije(akcije)
+    print("Uspešno napravljena akcija.")
+
+def ukupna_prodaja_svih_knjiga():
+    racuni = ucitaj_racune()
+    jedinstvene_knjige = []
+    for racun in racuni:
+        for knjiga, kolicina, jedinstvena_cena, jeste_akcija  in zip(racun["knjige"], racun["kolicine"], racun["jedinicne_cene"], racun["jeste_akcija"]):
+            for indeks, k in enumerate(jedinstvene_knjige):
+                if k[0]["sifra"] == knjiga["sifra"]:
+                    jedinstvene_knjige[indeks][1] += kolicina
+                    jedinstvene_knjige[indeks][2] += jedinstvena_cena*kolicina
+                    break
+            else:
+                jedinstvene_knjige.append([knjiga, kolicina, jedinstvena_cena*kolicina])
+    
+    for knjiga, ukupna_kolicina, ukupna_cena in jedinstvene_knjige:
+        print(knjiga["naslov"], ukupna_kolicina, ukupna_cena)
+
+def ukupna_prodaja_svih_akcija():
+    racuni = ucitaj_racune()
+    jedinstvene_knjige = []
+    for racun in racuni:
+        for knjiga, kolicina, jedinstvena_cena, jeste_akcija  in zip(racun["knjige"], racun["kolicine"], racun["jedinicne_cene"], racun["jeste_akcija"]):
+            if jeste_akcija:
+                for indeks, k in enumerate(jedinstvene_knjige):
+                    if k[0]["sifra"] == knjiga["sifra"]:
+                        jedinstvene_knjige[indeks][1] += kolicina
+                        jedinstvene_knjige[indeks][2] += jedinstvena_cena*kolicina
+
+                        break
+                else:
+                    jedinstvene_knjige.append([knjiga, kolicina, jedinstvena_cena*kolicina])
+    
+    for knjiga, ukupna_kolicina, ukupna_cena in jedinstvene_knjige:
+        print(knjiga["naslov"], ukupna_kolicina, ukupna_cena)
+
+def ukupna_prodaja_svih_knjiga_autora():
+    autor = input("Unesi autora: ")
+    racuni = ucitaj_racune()
+    jedinstvene_knjige = []
+    for racun in racuni:
+        for knjiga, kolicina, jedinstvena_cena, jeste_akcija  in zip(racun["knjige"], racun["kolicine"], racun["jedinicne_cene"], racun["jeste_akcija"]):
+            if knjiga["autor"] == autor:
+                for indeks, k in enumerate(jedinstvene_knjige):
+                    if k[0]["sifra"] == knjiga["sifra"]:
+                        jedinstvene_knjige[indeks][1] += kolicina
+                        jedinstvene_knjige[indeks][2] += jedinstvena_cena*kolicina
+
+                        break
+                else:
+                    jedinstvene_knjige.append([knjiga, kolicina, jedinstvena_cena*kolicina])
+    
+    for knjiga, ukupna_kolicina, ukupna_cena in jedinstvene_knjige:
+        print(knjiga["naslov"], ukupna_kolicina, ukupna_cena)
+
+def ukupna_prodaja_svih_knjiga_izdavaca():
+    izdavac = input("Unesi izdavača: ")
+    racuni = ucitaj_racune()
+    jedinstvene_knjige = []
+    for racun in racuni:
+        for knjiga, kolicina, jedinstvena_cena, jeste_akcija  in zip(racun["knjige"], racun["kolicine"], racun["jedinicne_cene"], racun["jeste_akcija"]):
+            if knjiga["izdavac"] == izdavac:
+                for indeks, k in enumerate(jedinstvene_knjige):
+                    if k[0]["sifra"] == knjiga["sifra"]:
+                        jedinstvene_knjige[indeks][1] += kolicina
+                        jedinstvene_knjige[indeks][2] += jedinstvena_cena*kolicina
+
+                        break
+                else:
+                    jedinstvene_knjige.append([knjiga, kolicina, jedinstvena_cena*kolicina])
+    
+    for knjiga, ukupna_kolicina, ukupna_cena in jedinstvene_knjige:
+        print(knjiga["naslov"], ukupna_kolicina, ukupna_cena)
+
+def pravljenje_izvestaja():
+    print("1. Ukupna prodaja svih knjiga")
+    print("2. Ukupna prodaja svih akcija")
+    print("3. Ukupna prodaja svih knjiga odabranog autora")
+    print("4. Ukupna prodaja svih knjiga odabranog izdavača")
+    izbor = input("Unesite izbor: ")
+    if izbor == "1":
+        ukupna_prodaja_svih_knjiga()
+    elif izbor == "2":
+        ukupna_prodaja_svih_akcija()
+    elif izbor == "3":
+        ukupna_prodaja_svih_knjiga_autora()
+    elif izbor == "4":
+        ukupna_prodaja_svih_knjiga_izdavaca()
+        
+
 def prikazi_knjige():
     print("\n1. Sortiranje po naslovu")
     print("2. Sortiranje po kategoriji")
@@ -224,7 +467,7 @@ def prikazi_knjige():
     print("4. Sortiranje po izdavaču")
     print("5. Sortiranje po ceni")
 
-    opcija = int(input(">>Izaberite opciju: "))
+    opcija = unesi_ceo_broj(">>Izaberite opciju: ")
 
     knjige = []
 
@@ -246,10 +489,6 @@ def prikazi_knjige():
     else:
         print("Opcija ne postoji")
 
-    for knjiga in knjige:
-        tabela_knjiga = str(knjiga["sifra"]).ljust(8) + "|" + knjiga["naslov"].ljust(22) + "|" + knjiga["autor"].ljust(
-            21) + "|" + knjiga["isbn"].ljust(20) + "|" + knjiga["izdavac"].ljust(21) + "|" + str(
-            knjiga["godina"]).ljust(15) + "|" + str(knjiga["cena"]).ljust(13) + "|" + knjiga["kategorija"].ljust(15)
-        print(tabela_knjiga)
+    ispisi_tabelu(knjige)
 
 

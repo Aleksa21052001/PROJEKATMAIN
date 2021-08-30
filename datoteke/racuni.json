@@ -1,0 +1,99 @@
+[
+    {
+        "sifra": 1,
+        "prodavac": "prodavac",
+        "datum_vreme": "03-03-2019 13:45",
+        "knjige": [
+            {
+                "sifra": 15,
+                "naslov": "Deca zla",
+                "autor": "Miodrag Majic",
+                "isbn": "1342312333229",
+                "izdavac": "Vulkan",
+                "godina": 2018,
+                "cena": 890.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            }
+        ],
+        "kolicine": [
+            4
+        ],
+        "jedinicne_cene": [
+            890
+        ],
+        "jeste_akcija": [
+            true
+        ],
+        "ukupna_cena": 3560
+    },
+    {
+        "sifra": 2,
+        "knjige": [
+            {
+                "sifra": 15,
+                "naslov": "Deca zla",
+                "autor": "Miodrag Majic",
+                "isbn": "1342312333229",
+                "izdavac": "Vulkan",
+                "godina": 2018,
+                "cena": 890.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            }
+        ],
+        "kolicine": [
+            3
+        ],
+        "jedinicne_cene": [
+            890.0
+        ],
+        "jeste_akcija": [
+            false
+        ],
+        "datum_vreme": "25-08-2021 17:52",
+        "ukupna_cena": 2670.0,
+        "prodavac": "prodavac"
+    },
+    {
+        "sifra": 3,
+        "knjige": [
+            {
+                "sifra": 11,
+                "naslov": "Knjiga 15",
+                "autor": "Marko",
+                "isbn": "2342536",
+                "izdavac": "Vulkan",
+                "godina": 2015,
+                "cena": 470.0,
+                "kategorija": "roman",
+                "obrisana": false
+            },
+            {
+                "sifra": 12,
+                "naslov": "Knjiga16",
+                "autor": "Mira ",
+                "isbn": "23454534534534",
+                "izdavac": "Delfi knjizare",
+                "godina": 2003,
+                "cena": 180.0,
+                "kategorija": "bajka",
+                "obrisana": false
+            }
+        ],
+        "kolicine": [
+            1,
+            1
+        ],
+        "jedinicne_cene": [
+            400,
+            1200
+        ],
+        "datum_vreme": "25-08-2021 17:55",
+        "jeste_akcija": [
+            true, true
+        ],
+        "ukupna_cena": 1600,
+        "prodavac": "prodavac"
+    }
+]

@@ -1,5 +1,7 @@
-from korisnici.kosrisnici import prijava, registracija_novih_korisnika, prikaz_svih_korisnika
-from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige
+from korisnici.korisnici import prijava, registracija_novih_korisnika, prikaz_svih_korisnika
+from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige, prodaja_knjiga, dodavanje_akcije, pravljenje_izvestaja
+from akcije.akcije import prikaz_akcija, pretraga_akcija
+from unos import unesi_ceo_broj
 
 def zajednici_meni():
     print("\n1. Prikaz knjiga")
@@ -17,7 +19,7 @@ def meni_menadzer():
         print("8. kreiranje izvestaja")
         print("10. Kraj")
 
-        stavka = int(input(">>Izaberite stavku: "))
+        stavka = unesi_ceo_broj(">>Izaberite stavku: ")
 
 
         if stavka == 1:
@@ -25,17 +27,17 @@ def meni_menadzer():
         elif stavka == 2:
             pretrazi_knjige()
         elif stavka == 3:
-            pass
+            prikaz_akcija()
         elif stavka == 4:
-            pass
+            pretraga_akcija()
         elif stavka == 5:
             registracija_novih_korisnika()
         elif stavka == 6:
             prikaz_svih_korisnika()
         elif stavka == 7:
-            pass
+            dodavanje_akcije()
         elif stavka == 8:
-            pass
+            pravljenje_izvestaja()
         elif stavka == 10:
             print()
             print('"Hvala sto ste koristili aplikaciju"')
@@ -48,23 +50,23 @@ def meni_prodavac():
 
     while True:
         zajednici_meni()
-        print("5. prodaja knjiga")
+        print("5. Prodaja knjiga")
         print("6. Dodavanje knjige")
         print("7. Izmena knjige")
         print("8. Logičko brisanje knjige")
         print("10. Kraj")
-        opcija = int(input(">>Izaberite opciju: "))
+        opcija = unesi_ceo_broj(">>Izaberite stavku: ")
 
         if opcija == 1:
             prikazi_knjige()
         elif opcija == 2:
             pretrazi_knjige()
         elif opcija == 3:
-            pass
+            prikaz_akcija()
         elif opcija == 4:
-            pass
+            pretraga_akcija()
         elif opcija == 5:
-            pass
+            prodaja_knjiga()
         elif opcija == 6:
             dodavanje_knjige()
         elif opcija == 7:
@@ -91,16 +93,16 @@ def meni_administrator():
         print("9. Logičko brisanje knjige")
         print("10. Kraj")
 
-        stavka = int(input(">>Izaberite stavku: "))
+        stavka = unesi_ceo_broj(">>Izaberite stavku: ")
 
         if stavka == 1:
             prikazi_knjige()
         elif stavka == 2:
             pretrazi_knjige()
         elif stavka == 3:
-            pass
+            prikaz_akcija()
         elif stavka == 4:
-            pass
+            pretraga_akcija()
         elif stavka == 5:
 
             registracija_novih_korisnika()
