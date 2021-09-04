@@ -32,6 +32,7 @@ def prikaz_akcija():
 def pretraga_po_sifri(akcije, kljuc):
     akcije = [akcija for akcija in akcije if int(kljuc) == akcija["sifra"]]
     return akcije
+
 def pretraga_po_naslovu(akcije, kljuc):
     nove_akcije = []
     for akcija in akcije:

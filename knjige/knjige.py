@@ -145,7 +145,8 @@ def pretrazi_knjige_string(kljuc, vrednost):
     filitrirane_knjige = []  # knjige koje su prosle kriterijum za PRETRAGU
 
     for knjiga in knjige:
-        if vrednost.lower() in knjiga[ kljuc].lower():  # STRING IN STRING PROVERAVA DA LI SE OVO STO SMO UNELI NALAZI BILO GDE
+        if vrednost.lower() in knjiga[
+            kljuc].lower():  # STRING IN STRING PROVERAVA DA LI SE OVO STO SMO UNELI NALAZI BILO GDE
             filitrirane_knjige.append(knjiga)
 
     return filitrirane_knjige

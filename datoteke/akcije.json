@@ -30,5 +30,37 @@
             700.0,
             300.0
         ]
+    },
+    {
+        "sifra": 2,
+        "datum": "20-09-2021",
+        "knjige": [
+            {
+                "sifra": 21,
+                "naslov": "Na Drini cuprija",
+                "autor": "Ivo Andric",
+                "isbn": "1346312333229",
+                "izdavac": "Vulkan",
+                "godina": 2016,
+                "cena": 743.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            },
+            {
+                "sifra": 23,
+                "naslov": "TRIJUMFALNA KAPIJA",
+                "autor": "Erih Marija Remark",
+                "isbn": "13463146333229",
+                "izdavac": "Delfi knjizare",
+                "godina": 2019,
+                "cena": 1233.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            }
+        ],
+        "cene": [
+            500.0,
+            1000.0
+        ]
     }
 ]

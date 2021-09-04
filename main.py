@@ -1,5 +1,5 @@
 from korisnici.korisnici import prijava, registracija_novih_korisnika, prikaz_svih_korisnika
-from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige, prodaja_knjiga, dodavanje_akcije, pravljenje_izvestaja, logicko_brisanje
+from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige, prodaja_knjiga, dodavanje_akcije, pravljenje_izvestaja
 from akcije.akcije import prikaz_akcija, pretraga_akcija
 from unos import unesi_ceo_broj
 
@@ -72,7 +72,7 @@ def meni_prodavac():
         elif opcija == 7:
             izmena_knjige()
         elif opcija == 8:
-            logicko_brisanje()
+            pass
         elif opcija == 10:
             print()
             print('"Hvala sto ste koristili aplikaciju"')
@@ -113,7 +113,7 @@ def meni_administrator():
         elif stavka == 8:
             izmena_knjige()
         elif stavka == 9:
-            logicko_brisanje()
+            pass
         elif stavka == 10:
             print()
             print('"Hvala sto ste koristili aplikaciju"')
