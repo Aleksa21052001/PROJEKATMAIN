@@ -91,9 +91,178 @@
         ],
         "datum_vreme": "25-08-2021 17:55",
         "jeste_akcija": [
-            true, true
+            true,
+            true
         ],
         "ukupna_cena": 1600,
+        "prodavac": "prodavac"
+    },
+    {
+        "sifra": 4,
+        "knjige": [
+            {
+                "sifra": 23,
+                "naslov": "TRIJUMFALNA KAPIJA",
+                "autor": "Erih Marija Remark",
+                "isbn": "13463146333229",
+                "izdavac": "Delfi knjizare",
+                "godina": 2019,
+                "cena": 1233.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            }
+        ],
+        "kolicine": [
+            3
+        ],
+        "jedinicne_cene": [
+            1233.0
+        ],
+        "datum_vreme": "05-09-2021 15:06",
+        "ukupna_cena": 3699.0,
+        "jeste_akcija": [
+            false
+        ],
+        "prodavac": "prodavac"
+    },
+    {
+        "sifra": 5,
+        "knjige": [
+            {
+                "sifra": 12,
+                "naslov": "Knjiga16",
+                "autor": "Mira ",
+                "isbn": "23454534534534",
+                "izdavac": "Delfi knjizare",
+                "godina": 2003,
+                "cena": 180.0,
+                "kategorija": "bajka",
+                "obrisana": false
+            },
+            {
+                "sifra": 23,
+                "naslov": "TRIJUMFALNA KAPIJA",
+                "autor": "Erih Marija Remark",
+                "isbn": "13463146333229",
+                "izdavac": "Delfi knjizare",
+                "godina": 2019,
+                "cena": 1233.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            }
+        ],
+        "kolicine": [
+            3,
+            2
+        ],
+        "jedinicne_cene": [
+            180.0,
+            1233.0
+        ],
+        "datum_vreme": "05-09-2021 15:09",
+        "ukupna_cena": 3006.0,
+        "jeste_akcija": [
+            false,
+            false
+        ],
+        "prodavac": "prodavac"
+    },
+    {
+        "sifra": 6,
+        "knjige": [
+            {
+                "sifra": 23,
+                "naslov": "TRIJUMFALNA KAPIJA",
+                "autor": "Erih Marija Remark",
+                "isbn": "13463146333229",
+                "izdavac": "Delfi knjizare",
+                "godina": 2019,
+                "cena": 1233.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            },
+            {
+                "sifra": 19,
+                "naslov": "Norveska suma",
+                "autor": "Haruki Murakami",
+                "isbn": "1342312333434",
+                "izdavac": "Vulkan",
+                "godina": 2019,
+                "cena": 655.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            }
+        ],
+        "kolicine": [
+            3,
+            2
+        ],
+        "jedinicne_cene": [
+            1233.0,
+            655.0
+        ],
+        "datum_vreme": "05-09-2021 15:22",
+        "ukupna_cena": 5009.0,
+        "jeste_akcija": [
+            false,
+            false
+        ],
+        "prodavac": "prodavac"
+    },
+    {
+        "sifra": 7,
+        "knjige": [
+            {
+                "sifra": 11,
+                "naslov": "Knjiga proba",
+                "autor": "Marko",
+                "isbn": "2342536",
+                "izdavac": "Vulkan",
+                "godina": 2015,
+                "cena": 470.0,
+                "kategorija": "roman",
+                "obrisana": false
+            },
+            {
+                "sifra": 14,
+                "naslov": "Komo",
+                "autor": "Srdjan Valjarevic",
+                "isbn": "1312312335629",
+                "izdavac": "Vulkan",
+                "godina": 2020,
+                "cena": 600.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            },
+            {
+                "sifra": 15,
+                "naslov": "Deca zla",
+                "autor": "Miodrag Majic",
+                "isbn": "1342312333229",
+                "izdavac": "Vulkan",
+                "godina": 2018,
+                "cena": 890.0,
+                "kategorija": "Roman",
+                "obrisana": false
+            }
+        ],
+        "kolicine": [
+            1,
+            1,
+            1
+        ],
+        "jedinicne_cene": [
+            400.0,
+            400.0,
+            700.0
+        ],
+        "datum_vreme": "05-09-2021 15:46",
+        "ukupna_cena": 1500.0,
+        "jeste_akcija": [
+            true,
+            true,
+            true
+        ],
         "prodavac": "prodavac"
     }
 ]

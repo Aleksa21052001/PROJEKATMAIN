@@ -1,6 +1,8 @@
-x = [1,2,3,4,5,6]
-print(range(x))
+from datetime import datetime
 
-obrisan = {'True')
-x = obrisan == 'True'
-print(x)
+# datum = input("Unesi datum vazenja akcije(dd-mm-YYYY): ")
+# datum = datetime.strptime(datum, "%d-%m-%Y")
+# print(datum)
+#
+# a = (1,2,3,4)
+# print(a[0])

@@ -1,7 +1,9 @@
 from korisnici.korisnici import prijava, registracija_novih_korisnika, prikaz_svih_korisnika
-from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige, prodaja_knjiga, dodavanje_akcije, pravljenje_izvestaja
+from knjige.knjige import prikazi_knjige, ucitaj_knjige, pretrazi_knjige, izmena_knjige, dodavanje_knjige, prodaja_knjiga, dodavanje_akcije, pravljenje_izvestaja, logicko_brisanje
 from akcije.akcije import prikaz_akcija, pretraga_akcija
 from unos import unesi_ceo_broj
+
+
 
 def zajednici_meni():
     print("\n1. Prikaz knjiga")
@@ -55,6 +57,7 @@ def meni_prodavac():
         print("7. Izmena knjige")
         print("8. Logičko brisanje knjige")
         print("10. Kraj")
+
         opcija = unesi_ceo_broj(">>Izaberite stavku: ")
 
         if opcija == 1:
@@ -72,7 +75,7 @@ def meni_prodavac():
         elif opcija == 7:
             izmena_knjige()
         elif opcija == 8:
-            pass
+            logicko_brisanje()
         elif opcija == 10:
             print()
             print('"Hvala sto ste koristili aplikaciju"')
@@ -113,7 +116,7 @@ def meni_administrator():
         elif stavka == 8:
             izmena_knjige()
         elif stavka == 9:
-            pass
+            logicko_brisanje()
         elif stavka == 10:
             print()
             print('"Hvala sto ste koristili aplikaciju"')
@@ -140,5 +143,6 @@ def main():
             meni_menadzer()
         else:
             print('"Korisnik ima nepoznatu ulogu"')
+
 
 main()

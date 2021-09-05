@@ -1,4 +1,5 @@
 from korisnici.korisniciIO import ucitaj_korisnike, sacuvaj_korisnike
+from unos import *
 
 
 ulogovani_korisnik = None
@@ -35,7 +36,7 @@ def prikaz_svih_korisnika():
     print("2. sortiranje po prezimenu")
     print("3. sortiranje po tipu korisnika")
 
-    opcija = int(input(">>izaberite parametar sortiranja: "))
+    opcija = unesi_ceo_broj(">>izaberite parametar sortiranja: ")
 
     sortirani_korisnici  = []
 
@@ -68,12 +69,12 @@ def registracija_novih_korisnika():
 
     korisnici = ucitaj_korisnike()
     print()
-    korisnicko_ime = str(input('>>unesite korisnicko ime novog korisnika: '))
+    korisnicko_ime = unesi_neprazan_string('>>unesite korisnicko ime novog korisnika: ')
 
     if provera_korisnika(korisnici, korisnicko_ime) is None:
-        lozinka = input('>>unesite lozinku: ')
-        ime = input('>>unesite ime novog korisnika: ')
-        prezime = input('>>unesite prezime novog korisnika: ')
+        lozinka = unesi_neprazan_string('>>unesite lozinku: ')
+        ime = unesi_neprazan_string('>>unesite ime novog korisnika: ')
+        prezime = unesi_neprazan_string('>>unesite prezime novog korisnika: ')
 
         print("\n'Ako zelite da napustite registraciju ukucajte: nazad'\n")
 
@@ -84,7 +85,7 @@ def registracija_novih_korisnika():
                 return
             if tip_korisnika == "menadzer" or tip_korisnika == "prodavac":
                 novi_korisnik = {"korisnicko_ime":korisnicko_ime, "lozinka":lozinka, "ime":ime, "prezime": prezime , "tip_korisnika":tip_korisnika}
-                print("korisnik je uspesno registrovan")
+                print('"korisnik je uspesno registrovan"')
                 break
             print("'greska pri izboru tipa korisnika, pokusajte ponovo!'\n")
 

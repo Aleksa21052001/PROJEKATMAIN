@@ -1,1 +1,58 @@
-[{"korisnicko_ime": "prodavac", "lozinka": "prodavac", "ime": "Marko", "prezime": "Markovic", "tip_korisnika": "prodavac"}, {"korisnicko_ime": "admin", "lozinka": "admin", "ime": "Aleksa ", "prezime": "Cosovic", "tip_korisnika": "administrator"}, {"korisnicko_ime": "menadzer", "lozinka": "menadzer", "ime": "Marko", "prezime": "Markovic", "tip_korisnika": "menadzer"}, {"korisnicko_ime": "fsdf", "lozinka": "sdf", "ime": "sdf", "prezime": "sdf", "tip_korisnika": "menadzer"}, {"korisnicko_ime": "aleksa", "lozinka": "cosovic", "ime": "aleksa", "prezime": "cosovic", "tip_korisnika": "menadzer"}, {"korisnicko_ime": "petar", "lozinka": "petar", "ime": "petar", "prezime": "petar", "tip_korisnika": "menadzer"}, {"korisnicko_ime": "andjela", "lozinka": "0202", "ime": "andjela", "prezime": "zivkovic", "tip_korisnika": "menadzer"}]
+[
+     {
+          "korisnicko_ime": "prodavac",
+          "lozinka": "prodavac",
+          "ime": "Marko",
+          "prezime": "Markovic",
+          "tip_korisnika": "prodavac"
+     },
+     {
+          "korisnicko_ime": "admin",
+          "lozinka": "admin",
+          "ime": "Aleksa ",
+          "prezime": "Cosovic",
+          "tip_korisnika": "administrator"
+     },
+     {
+          "korisnicko_ime": "menadzer",
+          "lozinka": "menadzer",
+          "ime": "Marko",
+          "prezime": "Markovic",
+          "tip_korisnika": "menadzer"
+     },
+     {
+          "korisnicko_ime": "fsdf",
+          "lozinka": "sdf",
+          "ime": "sdf",
+          "prezime": "sdf",
+          "tip_korisnika": "menadzer"
+     },
+     {
+          "korisnicko_ime": "aleksa",
+          "lozinka": "cosovic",
+          "ime": "aleksa",
+          "prezime": "cosovic",
+          "tip_korisnika": "menadzer"
+     },
+     {
+          "korisnicko_ime": "petar",
+          "lozinka": "petar",
+          "ime": "petar",
+          "prezime": "petar",
+          "tip_korisnika": "menadzer"
+     },
+     {
+          "korisnicko_ime": "andjela",
+          "lozinka": "0202",
+          "ime": "andjela",
+          "prezime": "zivkovic",
+          "tip_korisnika": "menadzer"
+     },
+     {
+          "korisnicko_ime": "MARKO",
+          "lozinka": "1234",
+          "ime": "luka",
+          "prezime": "DUKIC",
+          "tip_korisnika": "prodavac"
+     }
+]
