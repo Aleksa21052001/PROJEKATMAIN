@@ -40,18 +40,20 @@ def pretrazi_akcije_string(akcije, kljuc, vrednost):
     return nove_akcije
 
 def pretraga_akcija():
+
     akcije = ucitaj_akcije()
+
     print("\n1. Pretraga po šifri")
     print("2. Pretraga po naslovu")
     print("3. Pretraga po autoru")
     print("4. Pretraga po kategoriji")
 
     izbor = unesi_ceo_broj(">>izaberite opciju: ")
-    filtrirane = []
 
+    filtrirane = []
     if izbor == 1:
         vrednost = unesi_ceo_broj(">>Unesite sifru: ")
-        filtrirane = pretrazi_akcije_broj(akcije,"sifra", vrednost)
+        filtrirane = pretrazi_akcije_broj(akcije, "sifra", vrednost)
 
     elif izbor == 2:
         vrednost = unesi_neprazan_string(">>Unesite naslov: ")

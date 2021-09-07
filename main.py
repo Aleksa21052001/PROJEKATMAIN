@@ -107,7 +107,6 @@ def meni_administrator():
         elif stavka == 4:
             pretraga_akcija()
         elif stavka == 5:
-
             registracija_novih_korisnika()
         elif stavka == 6:
             prikaz_svih_korisnika()

@@ -21,8 +21,8 @@ def sortiraj_korisnika(kljuc):
                 korisnici[j] = temp
 
     kopija_korisnika = korisnici
-    korisnici_bez_lozinke = []
 
+    korisnici_bez_lozinke = []
     for korisnik in kopija_korisnika:
         korisnik.pop("lozinka")
         korisnici_bez_lozinke.append(korisnik)
@@ -39,14 +39,13 @@ def prikaz_svih_korisnika():
     opcija = unesi_ceo_broj(">>izaberite parametar sortiranja: ")
 
     sortirani_korisnici  = []
-
     if opcija == 1:
         sortirani_korisnici  = sortiraj_korisnika("ime")
         zaglavlje()
-    elif opcija ==2:
+    elif opcija == 2:
         sortirani_korisnici = sortiraj_korisnika("prezime")
         zaglavlje()
-    elif opcija ==3:
+    elif opcija == 3:
         sortirani_korisnici = sortiraj_korisnika("tip_korisnika")
         zaglavlje()
     else:
@@ -54,7 +53,7 @@ def prikaz_svih_korisnika():
 
 
     for korisnik in sortirani_korisnici:
-        tabela_korisnika = korisnik["korisnicko_ime"].ljust(17) + "|" + korisnik["ime"].ljust(19)  + "|" + korisnik["prezime"].ljust(23)  + "|" + korisnik["tip_korisnika"]
+        tabela_korisnika = korisnik["korisnicko_ime"].ljust(17) + "|" + korisnik["ime"].ljust(19) + "|" + korisnik["prezime"].ljust(23) + "|" + korisnik["tip_korisnika"]
         print(tabela_korisnika)
 
 
@@ -79,20 +78,22 @@ def registracija_novih_korisnika():
         print("\n'Ako zelite da napustite registraciju ukucajte: nazad'\n")
 
         while True:
-            tip_korisnika = str(input('>>tip je menadzer/prodavac: '))
+            tip_korisnika = str(input('>>tip je (menadzer/prodavac): '))
             if tip_korisnika == "nazad":
                 print("'registracija je prekinuta!'")
                 return
+
             if tip_korisnika == "menadzer" or tip_korisnika == "prodavac":
                 novi_korisnik = {"korisnicko_ime":korisnicko_ime, "lozinka":lozinka, "ime":ime, "prezime": prezime , "tip_korisnika":tip_korisnika}
                 print('"korisnik je uspesno registrovan"')
                 break
+
             print("'greska pri izboru tipa korisnika, pokusajte ponovo!'\n")
 
         korisnici.append(novi_korisnik)
         sacuvaj_korisnike(korisnici)
     else:
-        print("korisnik vec postoji!")
+        print("Korisnik vec postoji!")
 
 def prijava():   #proverava da li postoji korisnik, treba nam f-ja koja ucitava i koja proverava korisnike
     global ulogovani_korisnik
